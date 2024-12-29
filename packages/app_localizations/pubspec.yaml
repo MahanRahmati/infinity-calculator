@@ -1,0 +1,28 @@
+name: app_localizations
+description: A new Flutter project.
+publish_to: 'none'
+
+version: 1.0.0
+
+environment:
+  sdk: ^3.6.0
+
+resolution: workspace
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  slang: ^4.4.0
+  slang_flutter: ^4.4.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^5.0.0
+
+  build_runner: ^2.4.14
+  slang_build_runner: ^4.4.0
+
+flutter:
+  uses-material-design: true

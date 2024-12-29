@@ -1,0 +1,10 @@
+{
+  "appName": "Calculator",
+  "history": "History",
+  "about": "About",
+  "undefined": "Undefined",
+  "malformedExpression": "Malformed Expression",
+  "emptyHistory": "No History",
+  "clearHistory": "Clear History",
+  "clearHistoryDescription": "All calculations will be deleted. This action cannot be undone."
+}
