@@ -42,7 +42,7 @@ class DialogHeader extends StatelessWidget {
                 maxLines: 1,
                 textAlign: TextAlign.center,
                 overflow: TextOverflow.ellipsis,
-                style: AppTypography.title4.copyWith(
+                style: AppTypography.heading.copyWith(
                   color: AppColors.getForegroundColor(context),
                 ),
               ),

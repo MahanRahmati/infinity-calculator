@@ -121,7 +121,7 @@ class Button extends StatelessWidget {
               widthFactor: 1.0,
               heightFactor: 1.0,
               child: DefaultTextStyle(
-                style: AppTypography.heading,
+                style: AppTypography.body,
                 child: child ?? const SizedBox.shrink(),
               ),
             ),
