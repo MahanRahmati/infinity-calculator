@@ -90,7 +90,7 @@ void showAboutDialog({
           surfaceTintColor: AppColors.transparent,
           child: CreditsDialog(developers: developers),
         ),
-      if (license != null)
+      if (license != null && license.trim().isNotEmpty)
         WoltModalSheetPage(
           navBarHeight: 1,
           backgroundColor: backgroundColor,
