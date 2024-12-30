@@ -60,7 +60,6 @@ class CalculatorKeypad extends ConsumerWidget {
           ),
           KeypadRow(
             children: <Widget>[
-              const BasicButton(text: '0'),
               Expanded(
                 child: SizedBox.expand(
                   child: CalculatorButton(
@@ -71,6 +70,7 @@ class CalculatorKeypad extends ConsumerWidget {
                   ),
                 ),
               ),
+              const BasicButton(text: '0'),
               Expanded(
                 child: SizedBox.expand(
                   child: CalculatorButton(
