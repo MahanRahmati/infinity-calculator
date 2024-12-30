@@ -20,6 +20,15 @@ class KeyboardHandler extends ConsumerWidget {
           return KeyEventResult.skipRemainingHandlers;
         }
 
+        if (event.logicalKey == LogicalKeyboardKey.tab) {
+          if (HardwareKeyboard.instance.isShiftPressed) {
+            FocusScope.of(context).previousFocus();
+          } else {
+            FocusScope.of(context).nextFocus();
+          }
+          return KeyEventResult.handled;
+        }
+
         // Handle only specific calculator keys
         if (event.logicalKey == LogicalKeyboardKey.escape) {
           clearAll(ref);
