@@ -97,8 +97,6 @@ class AppColors {
   static const Color headerbarDarkBackground = Color(0xFF363636);
 
   // Sidebar colors
-  //static const Color sidebarLightBackground = Color(0xFFEBEBEB);
-  // static const Color sidebarLightBackground = Color(0xFFFAFAFA);
   static const Color sidebarLightBackground = Color(0xFFF5F5F5);
   static const Color sidebarDarkBackground = Color(0xFF2D2D2D);
 
@@ -110,45 +108,39 @@ class AppColors {
   static const Color borderLightBackground = Color(0xFFE9E9E9);
   static const Color borderDarkBackground = Color(0xFF171717);
 
+  // Destructive colors
   static const Color destructiveLight = Color(0xFFC30000);
   static const Color destructiveDark = Color(0xFFFF938C);
 
+  // Success colors
   static const Color successLight = Color(0xFF007c3d);
   static const Color successDark = Color(0xFF78e9ab);
 
+  // Warning colors
   static const Color warningLight = Color(0xFF905400);
   static const Color warningDark = Color(0xFFffc252);
 
-  static Color getHoverColor(final Color baseColor) {
-    // For light colors, darken by 3%
-    if (baseColor.computeLuminance() > 0.5) {
-      return HSLColor.fromColor(baseColor)
-          .withLightness(
-            (HSLColor.fromColor(baseColor).lightness - 0.03).clamp(0.0, 1.0),
-          )
-          .toColor();
-    }
-    // For dark colors, lighten by 3%
-    return HSLColor.fromColor(baseColor)
-        .withLightness(
-          (HSLColor.fromColor(baseColor).lightness + 0.03).clamp(0.0, 1.0),
-        )
-        .toColor();
-  }
+  static Color getStateColor(
+    final Color baseColor,
+    final InteractionState state,
+  ) {
+    final double value = switch (state) {
+      InteractionState.hover => 0.03,
+      InteractionState.pressed => 0.08,
+    };
 
-  static Color getPressedColor(final Color baseColor) {
-    // For light colors, darken by 8%
+    // For light colors, darken by value %
     if (baseColor.computeLuminance() > 0.5) {
       return HSLColor.fromColor(baseColor)
           .withLightness(
-            (HSLColor.fromColor(baseColor).lightness - 0.08).clamp(0.0, 1.0),
+            (HSLColor.fromColor(baseColor).lightness - value).clamp(0.0, 1.0),
           )
           .toColor();
     }
-    // For dark colors, lighten by 8%
+    // For dark colors, lighten by value %
     return HSLColor.fromColor(baseColor)
         .withLightness(
-          (HSLColor.fromColor(baseColor).lightness + 0.08).clamp(0.0, 1.0),
+          (HSLColor.fromColor(baseColor).lightness + value).clamp(0.0, 1.0),
         )
         .toColor();
   }
@@ -210,16 +202,6 @@ class AppColors {
     }
   }
 
-  static Color getStatusForegroundColor(final StatusType type) {
-    switch (type) {
-      case StatusType.warning:
-        return getRgbColor(0, 0, 0, 0.8);
-      case StatusType.success:
-      case StatusType.error:
-        return white;
-    }
-  }
-
   static Color getButtonBackgroundColor(
     final BuildContext context, {
     final int? elavation,
@@ -274,6 +256,11 @@ enum StatusType {
   success,
   warning,
   error,
+}
+
+enum InteractionState {
+  hover,
+  pressed,
 }
 
 extension ColorExtensions on Color {

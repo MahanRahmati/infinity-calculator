@@ -87,11 +87,13 @@ class Button extends StatelessWidget {
               context,
               elavation: elavation ?? 1,
             );
-        final Color backgroundHoverColor = AppColors.getHoverColor(
+        final Color backgroundHoverColor = AppColors.getStateColor(
           color,
+          InteractionState.hover,
         );
-        final Color backgroundPressedColor = AppColors.getPressedColor(
+        final Color backgroundPressedColor = AppColors.getStateColor(
           color,
+          InteractionState.pressed,
         );
         final Color bg = !enabled
             ? color.disabled()

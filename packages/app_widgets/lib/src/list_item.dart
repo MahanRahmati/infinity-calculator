@@ -72,11 +72,13 @@ class ListItem extends StatelessWidget {
             context,
             BackgroundType.card,
           );
-          final Color backgroundHoverColor = AppColors.getHoverColor(
+          final Color backgroundHoverColor = AppColors.getStateColor(
             backgroundColor,
+            InteractionState.hover,
           );
-          final Color backgroundPressedColor = AppColors.getPressedColor(
+          final Color backgroundPressedColor = AppColors.getStateColor(
             backgroundColor,
+            InteractionState.pressed,
           );
           final Color bg = !enabled
               ? backgroundColor.disabled()
