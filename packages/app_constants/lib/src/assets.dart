@@ -4,5 +4,5 @@ class Assets {
   Assets._();
 
   static const String appIconLight = '${_mediaPath}light.png';
-  static const String appIconDark = '${_mediaPath}dark.png';
+  static const String appIconDark = '${_mediaPath}light.png';
 }

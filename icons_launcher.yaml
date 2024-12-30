@@ -6,25 +6,25 @@ icons_launcher:
       image_path: 'assets/images/light.png'
       # notification_image: 'assets/ic_foreground.png'
       # adaptive_background_color: '#ffffff'
-      adaptive_background_image: 'assets/images/ic_background_light.png'
-      adaptive_foreground_image: 'assets/images/ic_foreground_light.png'
-      adaptive_round_image: 'assets/images/light.png'
+      adaptive_background_image: 'assets/images/ic_background.png'
+      adaptive_foreground_image: 'assets/images/ic_foreground.png'
+      adaptive_round_image: 'assets/images/ic_round.png'
       # adaptive_monochrome_image: 'assets/ic_black_white.png'
     ios:
       enable: true
       image_path: 'assets/images/light.png'
-      dark_path: 'assets/images/dark.png'
-      # tinted_path: 'assets/ic_logo_rectangle_tinted.png'
+      dark_path: 'assets/images/light.png'
+      tinted_path: 'assets/images/light.png'
     web:
       enable: false
       # image_path: 'assets/ic_logo_radius.png'
       # favicon_path: 'assets/ic_logo_round.png'
     macos:
       enable: true
-      image_path: 'assets/images/light_round.png'
+      image_path: 'assets/images/desktop_light.png'
     windows:
       enable: true
-      image_path: 'assets/images/light_round.png'
+      image_path: 'assets/images/desktop_light.png'
     linux:
       enable: true
-      image_path: 'assets/images/light_round.png'
+      image_path: 'assets/images/desktop_light.png'
