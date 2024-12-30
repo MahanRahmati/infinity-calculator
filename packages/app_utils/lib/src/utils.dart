@@ -2,6 +2,11 @@ import 'package:app_localizations/app_localizations.dart';
 import 'package:app_providers/app_providers.dart';
 import 'package:libcalculator/libcalculator.dart';
 
+String calculateExpression(final String expression) {
+  final String result = Calculator().calculate(expression);
+  return result;
+}
+
 void calculateResult(final WidgetRef ref) {
   final TranslationsEn t = ref.watch(translationProvider);
   final String expression = ref.read(expressionProvider);
@@ -28,7 +33,7 @@ void calculateResult(final WidgetRef ref) {
       return;
     }
 
-    final String result = Calculator().calculate(expression);
+    final String result = calculateExpression(expression);
     if (result.contains('Error:')) {
       // ignore: only_throw_errors
       throw result;
@@ -38,6 +43,7 @@ void calculateResult(final WidgetRef ref) {
     ref.read(expressionProvider.notifier).clear();
     ref.read(expressionProvider.notifier).add(result);
     ref.read(errorProvider.notifier).clear();
+    ref.read(tempResultProvider.notifier).clear();
   } catch (e) {
     if (e.toString().contains('Division by zero')) {
       ref.read(errorProvider.notifier).set(t.undefined);

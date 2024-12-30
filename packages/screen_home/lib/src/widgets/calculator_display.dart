@@ -14,6 +14,7 @@ class CalculatorDisplay extends ConsumerWidget {
         .watch(oldExpressionProvider)
         .replaceAll('*', '×')
         .replaceAll('/', '÷');
+    final String tempResult = ref.watch(tempResultProvider);
     final String error = ref.watch(errorProvider);
     return AppCard(
       padding: const EdgeInsets.only(
@@ -42,14 +43,24 @@ class CalculatorDisplay extends ConsumerWidget {
               color: AppColors.getForegroundColor(context),
             ),
           ),
-          _TextItem(
-            text: error,
-            reverse: true,
-            textAlign: TextAlign.end,
-            style: AppTypography.display3.copyWith(
-              color: AppColors.getStatusColor(context, StatusType.error),
+          if (tempResult.trim().isNotEmpty)
+            _TextItem(
+              text: tempResult,
+              reverse: false,
+              textAlign: TextAlign.end,
+              style: AppTypography.display3.copyWith(
+                color: AppColors.getForegroundColor(context).dimmed(),
+              ),
+            )
+          else
+            _TextItem(
+              text: error,
+              reverse: true,
+              textAlign: TextAlign.end,
+              style: AppTypography.display3.copyWith(
+                color: AppColors.getStatusColor(context, StatusType.error),
+              ),
             ),
-          ),
         ],
       ),
     );

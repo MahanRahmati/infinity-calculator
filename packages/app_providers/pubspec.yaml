@@ -18,6 +18,7 @@ dependencies:
 
   app_database: ^1.0.0
   app_localizations: ^1.0.0
+  app_utils: ^1.0.0
 
 dev_dependencies:
   flutter_test:
