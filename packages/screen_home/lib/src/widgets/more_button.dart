@@ -56,6 +56,7 @@ class MoreButton extends ConsumerWidget {
                 title: Text(t.about),
                 onPressed: () async {
                   final String license = await Environments.getLicense();
+                  final String version = await Environments.getVersion();
                   if (!context.mounted) {
                     return;
                   }
@@ -63,7 +64,7 @@ class MoreButton extends ConsumerWidget {
                   showAboutDialog(
                     context: context,
                     applicationName: t.appName,
-                    version: Strings.version,
+                    version: version,
                     applicationIcon: ApplicationIcon(
                       name: Theme.of(context).brightness == Brightness.dark
                           ? Assets.appIconDark

@@ -15,6 +15,7 @@ dependencies:
 
   ming_cute_icons: ^0.0.7
   wolt_modal_sheet: ^0.10.0
+  package_info_plus: ^8.1.2
 
 dev_dependencies:
   flutter_test:
