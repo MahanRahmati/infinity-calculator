@@ -1,8 +1,8 @@
 import 'package:app_localizations/app_localizations.dart';
 import 'package:app_providers/app_providers.dart';
+import 'package:app_router/app_router.dart';
 import 'package:app_widgets/app_widgets.dart';
 import 'package:flutter/widgets.dart';
-import 'package:screen_history/screen_history.dart';
 
 import '../widgets/calculator_display.dart';
 import '../widgets/calculator_keypad.dart';

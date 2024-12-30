@@ -22,7 +22,6 @@ dependencies:
   app_router: ^1.0.0
   app_utils: ^1.0.0
   app_widgets: ^1.0.0
-  screen_history: ^1.0.0
 
 dev_dependencies:
   flutter_test:
