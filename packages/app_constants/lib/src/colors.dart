@@ -241,43 +241,6 @@ class AppColors {
         : calculateLightElevation(elavation);
   }
 
-  static Color getSharedShadeColor(final BuildContext context) {
-    final bool isDark = Theme.of(context).brightness == Brightness.dark;
-    return isDark ? getRgbColor(0, 0, 6, 0.25) : getRgbColor(0, 0, 6, 0.07);
-  }
-
-  static Color getSharedBorderColor(final BuildContext context) {
-    final bool isDark = Theme.of(context).brightness == Brightness.dark;
-    return isDark ? getRgbColor(0, 0, 6, 0.36) : getRgbColor(0, 0, 6, 0.07);
-  }
-
-  static Color getHeaderbarBorderColor(final BuildContext context) {
-    final bool isDark = Theme.of(context).brightness == Brightness.dark;
-    return isDark ? white : getRgbColor(0, 0, 6, 0.8);
-  }
-
-  static Color getHeaderbarShadeColor(final BuildContext context) {
-    final bool isDark = Theme.of(context).brightness == Brightness.dark;
-    return isDark ? getRgbColor(0, 0, 6, 0.36) : getRgbColor(0, 0, 6, 0.12);
-  }
-
-  static Color getHeaderbarDarkerShadeColor(final BuildContext context) {
-    final bool isDark = Theme.of(context).brightness == Brightness.dark;
-    return isDark ? getRgbColor(0, 0, 12, 0.90) : getRgbColor(0, 0, 6, 0.12);
-  }
-
-  static Color getSidebarShadeColor(final BuildContext context) {
-    return getSharedShadeColor(context);
-  }
-
-  static Color getSidebarBorderColor(final BuildContext context) {
-    return getSharedBorderColor(context);
-  }
-
-  static Color getCardShadeColor(final BuildContext context) {
-    return getSharedBorderColor(context);
-  }
-
   static Color getBorderColor(
     final BuildContext context, {
     final Color? color,

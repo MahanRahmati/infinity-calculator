@@ -25,7 +25,7 @@ class AppCard extends StatelessWidget {
       context,
       BackgroundType.card,
     );
-    final Color borderColor = AppColors.getCardShadeColor(context);
+    final Color borderColor = AppColors.getBorderColor(context);
     final BorderSide borderSide = BorderSide(color: borderColor, width: 2);
     return Padding(
       padding: padding,

@@ -24,7 +24,7 @@ class BoxedList extends StatelessWidget {
       return const SizedBox.shrink();
     }
 
-    final Color borderColor = AppColors.getCardShadeColor(context);
+    final Color borderColor = AppColors.getBorderColor(context);
     final List<Widget> items = <Widget>[];
     for (int i = 0; i < children!.length; i++) {
       items.add(children![i]);

@@ -68,7 +68,7 @@ class _HeaderBarState extends State<HeaderBar> {
       context,
       BackgroundType.headerbar,
     );
-    final Color borderColor = AppColors.getCardShadeColor(context);
+    final Color borderColor = AppColors.getBorderColor(context);
 
     final Widget? leading = widget.leading;
 
