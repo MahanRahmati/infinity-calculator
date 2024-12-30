@@ -110,7 +110,9 @@ class Button extends StatelessWidget {
                   borderRadius ?? Dimens.borderRadius,
                 ),
                 side: BorderSide(
-                  color: enabled && isFocused ? bg : AppColors.transparent,
+                  color: enabled && isFocused
+                      ? backgroundPressedColor
+                      : AppColors.transparent,
                   width: 2,
                 ),
               ),
