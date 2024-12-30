@@ -36,46 +36,49 @@ class MoreButton extends ConsumerWidget {
       navBarHeight: 1,
       backgroundColor: backgroundColor,
       surfaceTintColor: AppColors.transparent,
-      child: Padding(
-        padding: const EdgeInsets.symmetric(vertical: Dimens.padding),
-        child: BoxedList(
-          children: <Widget>[
-            if (!fullExtended)
+      child: SafeArea(
+        top: false,
+        child: Padding(
+          padding: const EdgeInsets.symmetric(vertical: Dimens.padding),
+          child: BoxedList(
+            children: <Widget>[
+              if (!fullExtended)
+                ListItem(
+                  leading: const Icon(MingCuteIcons.mgc_history_line),
+                  title: Text(t.history),
+                  onPressed: () {
+                    Navigator.pop(context);
+                    Routes.navigateToHistory(context);
+                  },
+                ),
               ListItem(
-                leading: const Icon(MingCuteIcons.mgc_history_line),
-                title: Text(t.history),
-                onPressed: () {
+                leading: const Icon(MingCuteIcons.mgc_information_line),
+                title: Text(t.about),
+                onPressed: () async {
+                  final String license = await Environments.getLicense();
+                  if (!context.mounted) {
+                    return;
+                  }
                   Navigator.pop(context);
-                  Routes.navigateToHistory(context);
+                  showAboutDialog(
+                    context: context,
+                    applicationName: t.appName,
+                    version: Strings.version,
+                    applicationIcon: ApplicationIcon(
+                      name: Theme.of(context).brightness == Brightness.dark
+                          ? Assets.appIconDark
+                          : Assets.appIconLight,
+                      size: Dimens.appIconSize,
+                    ),
+                    developers: Environments.developers,
+                    website: Environments.website,
+                    issueUrl: Environments.issueUrl,
+                    license: license,
+                  );
                 },
               ),
-            ListItem(
-              leading: const Icon(MingCuteIcons.mgc_information_line),
-              title: Text(t.about),
-              onPressed: () async {
-                final String license = await Environments.getLicense();
-                if (!context.mounted) {
-                  return;
-                }
-                Navigator.pop(context);
-                showAboutDialog(
-                  context: context,
-                  applicationName: t.appName,
-                  version: Strings.version,
-                  applicationIcon: ApplicationIcon(
-                    name: Theme.of(context).brightness == Brightness.dark
-                        ? Assets.appIconDark
-                        : Assets.appIconLight,
-                    size: Dimens.appIconSize,
-                  ),
-                  developers: Environments.developers,
-                  website: Environments.website,
-                  issueUrl: Environments.issueUrl,
-                  license: license,
-                );
-              },
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

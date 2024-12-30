@@ -20,6 +20,7 @@ void showModal({
   WoltModalSheet.show<void>(
     context: context,
     pageListBuilder: pageListBuilder,
+    useSafeArea: false,
     modalTypeBuilder: (final BuildContext context) {
       if (isExtended(context)) {
         return AppPopupModalType(
@@ -40,6 +41,7 @@ void showDialogModal({
   WoltModalSheet.show<void>(
     context: context,
     pageListBuilder: pageListBuilder,
+    useSafeArea: false,
     modalTypeBuilder: (final BuildContext context) {
       if (isExtended(context)) {
         return const AppDialogModalType();

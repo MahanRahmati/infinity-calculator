@@ -15,18 +15,23 @@ class CreditsDialog extends StatelessWidget {
 
   @override
   Widget build(final BuildContext context) {
-    return Column(
-      mainAxisSize: MainAxisSize.min,
-      children: <Widget>[
-        const DialogHeader(showBackButton: true, title: 'Credits'),
-        const SizedBox(height: Dimens.padding),
-        BoxedList(
-          children: developers
-              .map((final String developer) => ListItem(title: Text(developer)))
-              .toList(),
-        ),
-        const SizedBox(height: Dimens.padding),
-      ],
+    return SafeArea(
+      top: false,
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: <Widget>[
+          const DialogHeader(showBackButton: true, title: 'Credits'),
+          const SizedBox(height: Dimens.padding),
+          BoxedList(
+            children: developers
+                .map(
+                  (final String developer) => ListItem(title: Text(developer)),
+                )
+                .toList(),
+          ),
+          const SizedBox(height: Dimens.padding),
+        ],
+      ),
     );
   }
 }
