@@ -13,7 +13,6 @@ dependencies:
   flutter:
     sdk: flutter
 
-  google_fonts: ^6.2.1
   ming_cute_icons: ^0.0.7
 
 dev_dependencies:
