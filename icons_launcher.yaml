@@ -21,10 +21,10 @@ icons_launcher:
       # favicon_path: 'assets/ic_logo_round.png'
     macos:
       enable: true
-      image_path: 'assets/images/light.png'
+      image_path: 'assets/images/light_round.png'
     windows:
       enable: true
-      image_path: 'assets/images/light.png'
+      image_path: 'assets/images/light_round.png'
     linux:
       enable: true
-      image_path: 'assets/images/light.png'
+      image_path: 'assets/images/light_round.png'
