@@ -52,7 +52,11 @@ class MoreButton extends ConsumerWidget {
             ListItem(
               leading: const Icon(MingCuteIcons.mgc_information_line),
               title: Text(t.about),
-              onPressed: () {
+              onPressed: () async {
+                final String license = await Environments.getLicense();
+                if (!context.mounted) {
+                  return;
+                }
                 Navigator.pop(context);
                 showAboutDialog(
                   context: context,
@@ -67,8 +71,7 @@ class MoreButton extends ConsumerWidget {
                   developers: Environments.developers,
                   website: Environments.website,
                   issueUrl: Environments.issueUrl,
-                  copyright: Environments.copyright,
-                  license: Environments.license,
+                  license: license,
                 );
               },
             ),

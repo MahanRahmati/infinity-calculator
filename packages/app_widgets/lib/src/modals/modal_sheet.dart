@@ -59,7 +59,6 @@ void showAboutDialog({
   final List<String> developers = const <String>[],
   final String? website,
   final String? issueUrl,
-  final String? copyright,
   final String? license,
 }) {
   final Color backgroundColor = AppColors.getBackgroundColor(
@@ -81,7 +80,6 @@ void showAboutDialog({
           developers: developers,
           website: website,
           issueUrl: issueUrl,
-          copyright: copyright,
           license: license,
         ),
       ),
@@ -92,12 +90,12 @@ void showAboutDialog({
           surfaceTintColor: AppColors.transparent,
           child: CreditsDialog(developers: developers),
         ),
-      if (copyright != null || license != null)
+      if (license != null)
         WoltModalSheetPage(
           navBarHeight: 1,
           backgroundColor: backgroundColor,
           surfaceTintColor: AppColors.transparent,
-          child: LegalDialog(copyright: copyright, license: license),
+          child: LegalDialog(license: license),
         ),
     ],
   );

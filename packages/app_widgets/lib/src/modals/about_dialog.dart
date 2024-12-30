@@ -16,7 +16,6 @@ class AboutDialog extends StatelessWidget {
     this.website,
     this.issueUrl,
     this.developers = const <String>[],
-    this.copyright,
     this.license,
   });
 
@@ -26,7 +25,6 @@ class AboutDialog extends StatelessWidget {
   final String? website;
   final String? issueUrl;
   final List<String> developers;
-  final String? copyright;
   final String? license;
 
   @override
@@ -107,7 +105,7 @@ class AboutDialog extends StatelessWidget {
                 ),
             ],
           ),
-        if (developers.isNotEmpty || copyright != null || license != null)
+        if (developers.isNotEmpty || license != null)
           BoxedList(
             children: <Widget>[
               if (developers.isNotEmpty)
@@ -122,7 +120,7 @@ class AboutDialog extends StatelessWidget {
                     WoltModalSheet.of(context).showAtIndex(1);
                   },
                 ),
-              if (copyright != null || license != null)
+              if (license != null)
                 ListItem(
                   title: const Text('Legal'),
                   trailing: Icon(
@@ -141,7 +139,6 @@ class AboutDialog extends StatelessWidget {
           height: (issueUrl != null ||
                   website != null ||
                   developers.isNotEmpty ||
-                  copyright != null ||
                   license != null)
               ? Dimens.padding
               : Dimens.largePadding,

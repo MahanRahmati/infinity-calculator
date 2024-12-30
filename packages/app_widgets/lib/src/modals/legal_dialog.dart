@@ -6,11 +6,9 @@ import 'dialog_header.dart';
 class LegalDialog extends StatelessWidget {
   const LegalDialog({
     super.key,
-    this.copyright,
     this.license,
   });
 
-  final String? copyright;
   final String? license;
 
   @override
@@ -21,16 +19,6 @@ class LegalDialog extends StatelessWidget {
       children: <Widget>[
         const DialogHeader(showBackButton: true, title: 'Legal'),
         const SizedBox(height: Dimens.padding),
-        if (copyright != null)
-          Padding(
-            padding: const EdgeInsets.all(Dimens.largePadding),
-            child: Text(
-              copyright!,
-              style: AppTypography.body.copyWith(
-                color: AppColors.getForegroundColor(context),
-              ),
-            ),
-          ),
         if (license != null) ...<Widget>[
           Padding(
             padding: const EdgeInsets.all(Dimens.largePadding),

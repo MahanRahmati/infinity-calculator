@@ -1,3 +1,5 @@
+import 'package:flutter/services.dart';
+
 class Environments {
   Environments._();
 
@@ -5,6 +7,12 @@ class Environments {
       'https://github.com/MahanRahmati/infinity-calculator';
   static const String issueUrl = '$website/issues';
   static const List<String> developers = <String>['Mahan Rahmati'];
-  static const String copyright = 'Copyright (c) 2024, Mahan Rahmati';
-  static const String license = 'MIT';
+
+  static Future<String> getLicense() async {
+    try {
+      return await rootBundle.loadString('LICENSE');
+    } catch (e) {
+      return '';
+    }
+  }
 }
