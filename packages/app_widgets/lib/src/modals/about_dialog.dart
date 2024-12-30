@@ -76,7 +76,10 @@ class AboutDialog extends StatelessWidget {
                   onPressed: () async {
                     final Uri uri = Uri.parse(website!);
                     if (await canLaunchUrl(uri)) {
-                      await launchUrl(uri);
+                      await launchUrl(
+                        uri,
+                        mode: LaunchMode.externalApplication,
+                      );
                     }
                     if (!context.mounted) {
                       return;
@@ -91,7 +94,10 @@ class AboutDialog extends StatelessWidget {
                   onPressed: () async {
                     final Uri uri = Uri.parse(issueUrl!);
                     if (await canLaunchUrl(uri)) {
-                      await launchUrl(uri);
+                      await launchUrl(
+                        uri,
+                        mode: LaunchMode.externalApplication,
+                      );
                     }
                     if (!context.mounted) {
                       return;
