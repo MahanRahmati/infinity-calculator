@@ -1,5 +1,5 @@
 name: service_native_splash
-description: Defines the native splash screen services.
+description: native_splash service.
 publish_to: 'none'
 
 version: 1.0.0

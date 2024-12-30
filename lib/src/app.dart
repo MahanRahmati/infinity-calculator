@@ -5,6 +5,7 @@ import 'package:app_router/app_router.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 
+/// The App is the root widget of the application.
 class App extends ConsumerWidget {
   const App({super.key});
 
