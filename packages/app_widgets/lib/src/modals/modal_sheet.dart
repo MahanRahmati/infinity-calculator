@@ -7,6 +7,7 @@ import 'bottom_dialog.dart';
 import 'bottom_sheet.dart';
 import 'credits_dialog.dart';
 import 'dialog.dart';
+import 'dialog_header.dart';
 import 'legal_dialog.dart';
 import 'popup.dart';
 
@@ -72,9 +73,10 @@ void showAboutDialog({
     context: context,
     pageListBuilder: (final BuildContext context) => <SliverWoltModalSheetPage>[
       WoltModalSheetPage(
-        navBarHeight: 1,
         backgroundColor: backgroundColor,
         surfaceTintColor: AppColors.transparent,
+        isTopBarLayerAlwaysVisible: true,
+        topBar: const DialogHeader(),
         child: AboutDialog(
           applicationName: applicationName,
           version: version,
@@ -87,16 +89,18 @@ void showAboutDialog({
       ),
       if (developers.isNotEmpty)
         WoltModalSheetPage(
-          navBarHeight: 1,
           backgroundColor: backgroundColor,
           surfaceTintColor: AppColors.transparent,
+          isTopBarLayerAlwaysVisible: true,
+          topBar: const DialogHeader(showBackButton: true, title: 'Credits'),
           child: CreditsDialog(developers: developers),
         ),
       if (license != null && license.trim().isNotEmpty)
         WoltModalSheetPage(
-          navBarHeight: 1,
           backgroundColor: backgroundColor,
           surfaceTintColor: AppColors.transparent,
+          isTopBarLayerAlwaysVisible: true,
+          topBar: const DialogHeader(showBackButton: true, title: 'Legal'),
           child: LegalDialog(license: license),
         ),
     ],

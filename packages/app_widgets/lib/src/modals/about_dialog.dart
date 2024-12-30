@@ -5,7 +5,6 @@ import 'package:wolt_modal_sheet/wolt_modal_sheet.dart';
 
 import '../boxed_list.dart';
 import '../list_item.dart';
-import 'dialog_header.dart';
 
 class AboutDialog extends StatelessWidget {
   const AboutDialog({
@@ -35,7 +34,6 @@ class AboutDialog extends StatelessWidget {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: <Widget>[
-          const DialogHeader(),
           if (applicationIcon != null) ...<Widget>[
             applicationIcon!,
             const SizedBox(height: Dimens.mediumPadding),

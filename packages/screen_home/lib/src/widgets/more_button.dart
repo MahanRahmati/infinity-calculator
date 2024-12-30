@@ -33,7 +33,7 @@ class MoreButton extends ConsumerWidget {
     );
 
     final WoltModalSheetPage pageContent = WoltModalSheetPage(
-      navBarHeight: 1,
+      hasTopBarLayer: false,
       backgroundColor: backgroundColor,
       surfaceTintColor: AppColors.transparent,
       child: SafeArea(

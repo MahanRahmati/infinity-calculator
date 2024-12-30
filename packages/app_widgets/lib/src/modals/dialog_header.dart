@@ -20,7 +20,6 @@ class DialogHeader extends StatelessWidget {
     return Padding(
       padding: const EdgeInsetsDirectional.only(
         start: Dimens.padding,
-        top: Dimens.largePadding,
         end: Dimens.largePadding,
       ),
       child: Row(

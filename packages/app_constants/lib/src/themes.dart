@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:wolt_modal_sheet/wolt_modal_sheet.dart';
 
 import 'colors.dart';
 import 'typography.dart';
@@ -20,6 +21,12 @@ class AppTheme {
         elevation: 0,
         shadowColor: Colors.transparent,
       ),
+      extensions: const <ThemeExtension<dynamic>>[
+        WoltModalSheetThemeData(
+          topBarShadowColor: AppColors.transparent,
+          topBarElevation: 0,
+        ),
+      ],
     );
   }
 
@@ -37,6 +44,12 @@ class AppTheme {
         elevation: 0,
         shadowColor: Colors.transparent,
       ),
+      extensions: const <ThemeExtension<dynamic>>[
+        WoltModalSheetThemeData(
+          topBarShadowColor: AppColors.transparent,
+          topBarElevation: 0,
+        ),
+      ],
     );
   }
 
