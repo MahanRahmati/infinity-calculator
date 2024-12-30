@@ -16,6 +16,7 @@ workspace:
   - packages/app_widgets
   - packages/screen_history
   - packages/service_native_splash
+  - packages/service_system_chrome
 
 dependencies:
   flutter:
