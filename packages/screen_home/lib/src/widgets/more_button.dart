@@ -85,6 +85,7 @@ class MoreButton extends ConsumerWidget {
 
     showModal(
       context: context,
+      useSafeArea: false,
       pageListBuilder: (final BuildContext context) {
         return <SliverWoltModalSheetPage>[pageContent];
       },

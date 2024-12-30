@@ -17,11 +17,12 @@ void showModal({
   required final BuildContext context,
   required final WoltModalSheetPageListBuilder pageListBuilder,
   required final Offset anchorPosition,
+  final bool useSafeArea = true,
 }) {
   WoltModalSheet.show<void>(
     context: context,
     pageListBuilder: pageListBuilder,
-    useSafeArea: false,
+    useSafeArea: useSafeArea,
     modalTypeBuilder: (final BuildContext context) {
       if (isExtended(context)) {
         return AppPopupModalType(
@@ -38,11 +39,12 @@ void showModal({
 void showDialogModal({
   required final BuildContext context,
   required final WoltModalSheetPageListBuilder pageListBuilder,
+  final bool useSafeArea = true,
 }) {
   WoltModalSheet.show<void>(
     context: context,
     pageListBuilder: pageListBuilder,
-    useSafeArea: false,
+    useSafeArea: useSafeArea,
     modalTypeBuilder: (final BuildContext context) {
       if (isExtended(context)) {
         return const AppDialogModalType();
