@@ -494,10 +494,10 @@ packages:
     dependency: transitive
     description:
       name: libcalculator
-      sha256: f3bcf4e87c4c1d5698ff0c577dadf63ace68f5fcaa75025400efc29c2972704b
+      sha256: e1a71dac15b2941b420d82e783635b4ecaa8aec3acb781d07bc902bf1ac5f1f7
       url: "https://pub.dev"
     source: hosted
-    version: "1.0.0"
+    version: "1.2.0"
   lints:
     dependency: transitive
     description:

@@ -13,7 +13,7 @@ dependencies:
   flutter:
     sdk: flutter
 
-  libcalculator: ^1.0.0
+  libcalculator: ^1.2.0
 
   app_providers: ^1.0.0
   app_localizations: ^1.0.0
