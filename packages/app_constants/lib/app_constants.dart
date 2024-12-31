@@ -1,4 +1,4 @@
-/// Constants.
+/// The app_constants library defines the constants.
 library;
 
 export 'package:ming_cute_icons/ming_cute_icons.dart';

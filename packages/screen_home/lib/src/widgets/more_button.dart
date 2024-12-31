@@ -65,10 +65,8 @@ class MoreButton extends ConsumerWidget {
                     context: context,
                     applicationName: t.appName,
                     version: version,
-                    applicationIcon: ApplicationIcon(
-                      name: Theme.of(context).brightness == Brightness.dark
-                          ? Assets.appIconDark
-                          : Assets.appIconLight,
+                    applicationIcon: const ApplicationIcon(
+                      name: Assets.appIcon,
                       size: Dimens.appIconSize,
                     ),
                     developers: Environments.developers,

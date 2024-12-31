@@ -1,5 +1,5 @@
 name: app_constants
-description: A new Flutter project.
+description: Defines the constants used in the application.
 publish_to: 'none'
 
 version: 1.0.0
