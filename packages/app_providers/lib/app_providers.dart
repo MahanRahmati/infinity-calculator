@@ -1,4 +1,4 @@
-/// The app_providers library defines providers used throughout the app.
+/// The app_providers library defines providers.
 library;
 
 export 'package:flutter_riverpod/flutter_riverpod.dart';

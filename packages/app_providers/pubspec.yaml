@@ -1,5 +1,5 @@
 name: app_providers
-description: A new Flutter project.
+description: Defines the providers used in the application.
 publish_to: 'none'
 
 version: 1.0.0
