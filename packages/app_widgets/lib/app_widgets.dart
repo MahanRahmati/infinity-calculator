@@ -1,4 +1,4 @@
-/// widgets.
+/// The app_widgets library defines the widgets.
 library;
 
 export 'src/app_card.dart';
