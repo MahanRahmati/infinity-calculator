@@ -1,5 +1,5 @@
 name: app_utils
-description: A new Flutter project.
+description: Defines the utilities used in the application.
 publish_to: 'none'
 
 version: 1.0.0
