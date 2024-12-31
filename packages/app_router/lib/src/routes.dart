@@ -9,14 +9,17 @@ import 'routes_name.dart';
 class Routes {
   Routes._();
 
+  /// The routes map defines the routes for the application.
   static final Map<String, WidgetBuilder> routes = <String, WidgetBuilder>{
     RoutesName.splash: (final BuildContext context) => const SplashScreen(),
     RoutesName.home: (final BuildContext context) => const HomeScreen(),
     RoutesName.history: (final BuildContext context) => const HistoryScreen(),
   };
 
+  /// The initial route defines the first route of the application.
   static const String initialRoute = RoutesName.splash;
 
+  /// The onGenerateRoute callback defines the routes for the application.
   static Route<dynamic>? onGenerateRoute(final RouteSettings settings) {
     switch (settings.name) {
       case RoutesName.splash:

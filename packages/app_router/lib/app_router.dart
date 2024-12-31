@@ -1,4 +1,4 @@
-/// The app_router library defines the router for the application.
+/// The app_router library defines the router.
 library;
 
 export 'package:screen_history/screen_history.dart';
