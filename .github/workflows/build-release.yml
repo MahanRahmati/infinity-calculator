@@ -62,7 +62,9 @@ jobs:
 
       - name: Build Windows
         if: matrix.os == 'windows-latest'
-        run: flutter build windows --release
+        run: |
+          flutter config --enable-windows-desktop
+          flutter build windows --release
 
       - name: Build macOS
         if: matrix.os == 'macos-latest'
