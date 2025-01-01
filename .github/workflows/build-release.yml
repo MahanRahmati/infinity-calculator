@@ -71,7 +71,6 @@ jobs:
           cp build/app/outputs/flutter-apk/app-arm64-v8a-release.apk calculator-android-arm64.apk
           cp build/app/outputs/flutter-apk/app-armeabi-v7a-release.apk calculator-android-armv7.apk
           cp build/app/outputs/flutter-apk/app-x86_64-release.apk calculator-android-x64.apk
-          cp build/app/outputs/flutter-apk/app-x86-release.apk calculator-android-x86.apk
 
       - name: Archive macOS Build
         if: matrix.os == 'macos-latest'
