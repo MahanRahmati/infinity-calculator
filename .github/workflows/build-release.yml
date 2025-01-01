@@ -16,12 +16,10 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [ubuntu-latest, windows-latest, macos-latest]
+        os: [ubuntu-latest, macos-latest]
         include:
           - os: ubuntu-latest
             output-name: linux
-          - os: windows-latest
-            output-name: windows
           - os: macos-latest
             output-name: macos
 
@@ -63,12 +61,6 @@ jobs:
         if: matrix.os == 'ubuntu-latest'
         run: flutter build apk --release
 
-      - name: Build Windows
-        if: matrix.os == 'windows-latest'
-        run: |
-          flutter config --enable-windows-desktop
-          flutter build windows --release
-
       - name: Build macOS
         if: matrix.os == 'macos-latest'
         run: flutter build macos --release
@@ -89,12 +81,6 @@ jobs:
         if: matrix.os == 'ubuntu-latest'
         run: |
           cp build/app/outputs/flutter-apk/app-release.apk calculator-android.apk
-
-      - name: Archive Windows Build
-        if: matrix.os == 'windows-latest'
-        run: |
-          cd build/windows/x64/runner/Release
-          7z a ../../../../../calculator-windows.zip .
 
       - name: Archive macOS Build
         if: matrix.os == 'macos-latest'
