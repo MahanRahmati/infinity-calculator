@@ -51,12 +51,6 @@ jobs:
         if: matrix.os == 'ubuntu-latest'
         run: flutter build linux --release
 
-      # - name: Build Linux ARM64
-      #   if: matrix.os == 'ubuntu-latest'
-      #   run: |
-      #     flutter config --enable-linux-desktop
-      #     CC=aarch64-linux-gnu-gcc CXX=aarch64-linux-gnu-g++ flutter build linux --release --target-platform linux-arm64
-
       - name: Build Android
         if: matrix.os == 'ubuntu-latest'
         run: flutter build apk --release
@@ -71,12 +65,6 @@ jobs:
           cd build/linux/x64/release/bundle
           zip -r ../../../../../calculator-linux-x64.zip .
 
-      # - name: Archive Linux ARM64 Build
-      #   if: matrix.os == 'ubuntu-latest'
-      #   run: |
-      #     cd build/linux/arm64/release/bundle
-      #     zip -r ../../../../../calculator-linux-arm64.zip .
-
       - name: Archive Android Build
         if: matrix.os == 'ubuntu-latest'
         run: |
@@ -88,6 +76,22 @@ jobs:
           cd build/macos/Build/Products/Release
           zip -r ../../../../../calculator-macos.zip *.app
 
+      - name: Upload Linux Artifacts
+        if: matrix.os == 'ubuntu-latest'
+        uses: actions/upload-artifact@v4
+        with:
+          name: linux-artifacts
+          path: |
+            calculator-linux-x64.zip
+            calculator-android.apk
+
+      - name: Upload macOS Artifacts
+        if: matrix.os == 'macos-latest'
+        uses: actions/upload-artifact@v4
+        with:
+          name: macos-artifacts
+          path: calculator-macos.zip
+
   create-release:
     needs: build-and-release
     runs-on: ubuntu-latest
@@ -97,13 +101,16 @@ jobs:
         with:
           path: artifacts
 
+      - name: List Files
+        run: ls -R artifacts/
+
       - name: Create Release
         uses: softprops/action-gh-release@v2
         with:
           tag_name: ${{ github.event.inputs.version }}
           files: |
-            artifacts/calculator-*.zip
-            artifacts/calculator-android.apk
+            artifacts/**/*.zip
+            artifacts/**/*.apk
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
