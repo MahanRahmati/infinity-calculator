@@ -88,12 +88,22 @@ jobs:
           cd build/macos/Build/Products/Release
           zip -r ../../../../../calculator-macos.zip *.app
 
+  create-release:
+    needs: build-and-release
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download Artifacts
+        uses: actions/download-artifact@v4
+        with:
+          path: artifacts
+
       - name: Create Release
         uses: softprops/action-gh-release@v2
         with:
           tag_name: ${{ github.event.inputs.version }}
           files: |
-            calculator-*.zip
-            calculator-android.apk
+            artifacts/calculator-*.zip
+            artifacts/calculator-android.apk
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
