@@ -50,11 +50,11 @@ jobs:
         if: matrix.os == 'ubuntu-latest'
         run: flutter build linux --release
 
-      - name: Build Linux ARM64
-        if: matrix.os == 'ubuntu-latest'
-        run: |
-          flutter config --enable-linux-desktop
-          CC=aarch64-linux-gnu-gcc CXX=aarch64-linux-gnu-g++ flutter build linux --release --target-platform linux-arm64
+      # - name: Build Linux ARM64
+      #   if: matrix.os == 'ubuntu-latest'
+      #   run: |
+      #     flutter config --enable-linux-desktop
+      #     CC=aarch64-linux-gnu-gcc CXX=aarch64-linux-gnu-g++ flutter build linux --release --target-platform linux-arm64
 
       - name: Build Android
         if: matrix.os == 'ubuntu-latest'
@@ -74,11 +74,11 @@ jobs:
           cd build/linux/x64/release/bundle
           zip -r ../../../../../calculator-linux-x64.zip .
 
-      - name: Archive Linux ARM64 Build
-        if: matrix.os == 'ubuntu-latest'
-        run: |
-          cd build/linux/arm64/release/bundle
-          zip -r ../../../../../calculator-linux-arm64.zip .
+      # - name: Archive Linux ARM64 Build
+      #   if: matrix.os == 'ubuntu-latest'
+      #   run: |
+      #     cd build/linux/arm64/release/bundle
+      #     zip -r ../../../../../calculator-linux-arm64.zip .
 
       - name: Archive Android Build
         if: matrix.os == 'ubuntu-latest'
