@@ -53,7 +53,7 @@ jobs:
 
       - name: Build Android
         if: matrix.os == 'ubuntu-latest'
-        run: flutter build apk --release
+        run: flutter build apk --release --split-per-abi
 
       - name: Build macOS
         if: matrix.os == 'macos-latest'
@@ -68,7 +68,10 @@ jobs:
       - name: Archive Android Build
         if: matrix.os == 'ubuntu-latest'
         run: |
-          cp build/app/outputs/flutter-apk/app-release.apk calculator-android.apk
+          cp build/app/outputs/flutter-apk/app-arm64-v8a-release.apk calculator-android-arm64.apk
+          cp build/app/outputs/flutter-apk/app-armeabi-v7a-release.apk calculator-android-armv7.apk
+          cp build/app/outputs/flutter-apk/app-x86_64-release.apk calculator-android-x64.apk
+          cp build/app/outputs/flutter-apk/app-x86-release.apk calculator-android-x86.apk
 
       - name: Archive macOS Build
         if: matrix.os == 'macos-latest'
@@ -83,7 +86,7 @@ jobs:
           name: linux-artifacts
           path: |
             calculator-linux-x64.zip
-            calculator-android.apk
+            calculator-android-*.apk
 
       - name: Upload macOS Artifacts
         if: matrix.os == 'macos-latest'
