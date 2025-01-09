@@ -1,9 +1,9 @@
-import 'package:app_constants/app_constants.dart';
 import 'package:app_localizations/app_localizations.dart';
 import 'package:app_providers/app_providers.dart';
 import 'package:app_router/app_router.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:infinity_widgets/infinity_widgets.dart';
 
 /// The App is the root widget of the application.
 class App extends ConsumerWidget {
@@ -18,8 +18,8 @@ class App extends ConsumerWidget {
       locale: ref.watch(appLanguageProvider).flutterLocale,
       localizationsDelegates: GlobalMaterialLocalizations.delegates,
       supportedLocales: AppLocaleUtils.supportedLocales,
-      theme: AppTheme.lightTheme(),
-      darkTheme: AppTheme.darkTheme(),
+      theme: InfinityTheme.light(),
+      darkTheme: InfinityTheme.dark(),
       routes: Routes.routes,
       initialRoute: Routes.initialRoute,
       onGenerateRoute: Routes.onGenerateRoute,

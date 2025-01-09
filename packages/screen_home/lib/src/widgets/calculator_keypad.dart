@@ -1,7 +1,7 @@
-import 'package:app_constants/app_constants.dart';
 import 'package:app_providers/app_providers.dart';
 import 'package:app_utils/app_utils.dart';
 import 'package:flutter/widgets.dart';
+import 'package:infinity_widgets/infinity_widgets.dart';
 
 import 'basic_button.dart';
 import 'calculator_button.dart';
@@ -14,10 +14,10 @@ class CalculatorKeypad extends ConsumerWidget {
   @override
   Widget build(final BuildContext context, final WidgetRef ref) {
     return Padding(
-      padding: const EdgeInsets.all(Dimens.largePadding),
+      padding: const EdgeInsets.all(InfinityDimens.largePadding),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
-        spacing: Dimens.largePadding,
+        spacing: InfinityDimens.largePadding,
         children: <Widget>[
           KeypadRow(
             children: <Widget>[

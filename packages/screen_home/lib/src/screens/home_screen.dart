@@ -1,8 +1,8 @@
 import 'package:app_localizations/app_localizations.dart';
 import 'package:app_providers/app_providers.dart';
 import 'package:app_router/app_router.dart';
-import 'package:app_widgets/app_widgets.dart';
 import 'package:flutter/widgets.dart';
+import 'package:infinity_widgets/infinity_widgets.dart';
 
 import '../widgets/calculator_display.dart';
 import '../widgets/calculator_keypad.dart';
@@ -17,57 +17,46 @@ class HomeScreen extends ConsumerWidget {
     final TranslationsEn t = ref.watch(translationProvider);
     ref.watch(historyProvider);
     return KeyboardHandler(
-      child: ResponsiveScaffold(
+      child: IResponsiveScaffold(
         headerBarBuilder: (
           final BuildContext context,
-          final bool extended,
-          final bool fullExtended,
+          final ResponsiveStates state,
         ) {
-          return HeaderBar(
-            title: Text(t.appName),
-            actions: <Widget>[
-              MoreButton(fullExtended: fullExtended),
+          return IHeaderBar(
+            middle: Text(t.appName),
+            trailing: <Widget>[
+              MoreButton(fullExtended: state == ResponsiveStates.fullExtended),
             ],
           );
         },
-        bodyBuilder: (
+        startWidgetBuilder: (
           final BuildContext context,
-          final bool extended,
-          final bool fullExtended,
+          final ResponsiveStates state,
         ) {
-          return ResponsivePage(
-            startWidgetBuilder: (
-              final BuildContext context,
-              final bool extended,
-              final bool fullExtended,
-            ) {
-              if (fullExtended) {
-                return const HistoryScreen(isInside: true);
-              }
-              return null;
-            },
-            childWidgetBuilder: (
-              final BuildContext context,
-              final bool extended,
-              final bool fullExtended,
-            ) {
-              if (fullExtended) {
-                return const Column(
-                  children: <Widget>[
-                    Expanded(flex: 35, child: CalculatorDisplay()),
-                    Expanded(flex: 55, child: CalculatorKeypad()),
-                  ],
-                );
-              }
-              return const ConstrainedItem(
-                child: Column(
-                  children: <Widget>[
-                    Expanded(flex: 35, child: CalculatorDisplay()),
-                    Expanded(flex: 55, child: CalculatorKeypad()),
-                  ],
-                ),
-              );
-            },
+          if (state == ResponsiveStates.fullExtended) {
+            return const HistoryScreen(isInside: true);
+          }
+          return null;
+        },
+        childWidgetBuilder: (
+          final BuildContext context,
+          final ResponsiveStates state,
+        ) {
+          if (state == ResponsiveStates.fullExtended) {
+            return const Column(
+              children: <Widget>[
+                Expanded(flex: 35, child: CalculatorDisplay()),
+                Expanded(flex: 55, child: CalculatorKeypad()),
+              ],
+            );
+          }
+          return const IBoundedBox(
+            child: Column(
+              children: <Widget>[
+                Expanded(flex: 35, child: CalculatorDisplay()),
+                Expanded(flex: 55, child: CalculatorKeypad()),
+              ],
+            ),
           );
         },
       ),

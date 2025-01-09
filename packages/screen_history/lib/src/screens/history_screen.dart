@@ -1,8 +1,7 @@
-import 'package:app_constants/app_constants.dart';
 import 'package:app_localizations/app_localizations.dart';
 import 'package:app_providers/app_providers.dart';
-import 'package:app_widgets/app_widgets.dart';
-import 'package:flutter/material.dart' hide BackButton, IconButton;
+import 'package:flutter/material.dart';
+import 'package:infinity_widgets/infinity_widgets.dart';
 
 import '../widgets/calculator_history.dart';
 import '../widgets/clear_history_button.dart';
@@ -19,14 +18,14 @@ class HistoryScreen extends ConsumerWidget {
   Widget build(final BuildContext context, final WidgetRef ref) {
     final TranslationsEn t = ref.watch(translationProvider);
     return Scaffold(
-      appBar: HeaderBar(
-        leading: isInside ? null : const BackButton(),
-        title: Text(t.history),
-        actions: const <Widget>[
+      appBar: IHeaderBar(
+        leading: isInside ? null : const IBackButton(),
+        middle: Text(t.history),
+        trailing: const <Widget>[
           ClearHistoryButton(),
         ],
       ),
-      backgroundColor: isInside ? AppColors.transparent : null,
+      backgroundColor: isInside ? InfinityColors.transparent : null,
       body: const CalculatorHistory(),
     );
   }

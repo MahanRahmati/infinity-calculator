@@ -2,8 +2,8 @@ import 'package:app_constants/app_constants.dart';
 import 'package:app_localizations/app_localizations.dart';
 import 'package:app_providers/app_providers.dart';
 import 'package:app_router/app_router.dart';
-import 'package:app_widgets/app_widgets.dart';
 import 'package:flutter/widgets.dart';
+import 'package:infinity_widgets/infinity_widgets.dart';
 
 class MoreButton extends ConsumerWidget {
   const MoreButton({
@@ -14,20 +14,10 @@ class MoreButton extends ConsumerWidget {
 
   final bool fullExtended;
   final VoidCallback? onPressed;
-  static final GlobalKey<State<StatefulWidget>> _buttonKey = GlobalKey();
 
   void _showMoreOptions(final BuildContext context, final WidgetRef ref) {
-    final RenderBox? button =
-        _buttonKey.currentContext?.findRenderObject() as RenderBox?;
-    if (button == null) {
-      return;
-    }
-
-    final Offset offset = button.localToGlobal(Offset.zero);
-    final Size size = button.size;
-
     final TranslationsEn t = ref.watch(translationProvider);
-    final Color backgroundColor = AppColors.getBackgroundColor(
+    final Color backgroundColor = InfinityColors.getBackgroundColor(
       context,
       BackgroundType.window,
     );
@@ -35,15 +25,15 @@ class MoreButton extends ConsumerWidget {
     final WoltModalSheetPage pageContent = WoltModalSheetPage(
       hasTopBarLayer: false,
       backgroundColor: backgroundColor,
-      surfaceTintColor: AppColors.transparent,
+      surfaceTintColor: InfinityColors.transparent,
       child: SafeArea(
         top: false,
         child: Padding(
-          padding: const EdgeInsets.symmetric(vertical: Dimens.padding),
-          child: BoxedList(
+          padding: const EdgeInsets.symmetric(vertical: InfinityDimens.padding),
+          child: IBoxedList(
             children: <Widget>[
               if (!fullExtended)
-                ListItem(
+                IListItem(
                   leading: const Icon(MingCuteIcons.mgc_history_line),
                   title: Text(t.history),
                   onPressed: () {
@@ -51,7 +41,7 @@ class MoreButton extends ConsumerWidget {
                     Routes.navigateToHistory(context);
                   },
                 ),
-              ListItem(
+              IListItem(
                 leading: const Icon(MingCuteIcons.mgc_information_line),
                 title: Text(t.about),
                 onPressed: () async {
@@ -61,13 +51,13 @@ class MoreButton extends ConsumerWidget {
                     return;
                   }
                   Navigator.pop(context);
-                  showAboutDialog(
+                  showAboutDialogModal(
                     context: context,
                     applicationName: t.appName,
                     version: version,
-                    applicationIcon: const ApplicationIcon(
-                      name: Assets.appIcon,
-                      size: Dimens.appIconSize,
+                    applicationIcon: IApplicationIcon.asset(
+                      Assets.appIcon,
+                      size: InfinityDimens.appIconSize,
                     ),
                     developers: Environments.developers,
                     website: Environments.website,
@@ -82,25 +72,19 @@ class MoreButton extends ConsumerWidget {
       ),
     );
 
-    showModal(
+    showDialogModal(
       context: context,
-      useSafeArea: false,
       pageListBuilder: (final BuildContext context) {
         return <SliverWoltModalSheetPage>[pageContent];
       },
-      anchorPosition: Offset(
-        offset.dx - Dimens.popupWidth + size.width,
-        offset.dy + size.height + 4,
-      ),
     );
   }
 
   @override
   Widget build(final BuildContext context, final WidgetRef ref) {
     return Padding(
-      padding: const EdgeInsetsDirectional.only(end: Dimens.padding),
-      child: IconButton(
-        key: _buttonKey,
+      padding: const EdgeInsetsDirectional.only(end: InfinityDimens.padding),
+      child: IButton.icon(
         onPressed: () => _showMoreOptions(context, ref),
         icon: MingCuteIcons.mgc_more_1_line,
       ),

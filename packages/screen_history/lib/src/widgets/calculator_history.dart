@@ -1,8 +1,7 @@
-import 'package:app_constants/app_constants.dart';
 import 'package:app_localizations/app_localizations.dart';
 import 'package:app_providers/app_providers.dart';
-import 'package:app_widgets/app_widgets.dart';
 import 'package:flutter/material.dart' hide IconButton;
+import 'package:infinity_widgets/infinity_widgets.dart';
 
 import 'history_item.dart';
 
@@ -15,7 +14,7 @@ class CalculatorHistory extends ConsumerWidget {
     return ref.watch(historyProvider).when(
           data: (final List<HistoryData> history) {
             if (history.isEmpty) {
-              return StatusPage(
+              return IStatusPage(
                 icon: MingCuteIcons.mgc_history_line,
                 title: t.emptyHistory,
               );
@@ -26,26 +25,26 @@ class CalculatorHistory extends ConsumerWidget {
                 groupHistoryByDate(history);
 
             return ListView.builder(
-              padding: const EdgeInsets.symmetric(vertical: Dimens.padding),
+              padding: const EdgeInsets.symmetric(
+                vertical: InfinityDimens.padding,
+              ),
               itemCount: groupedHistory.length,
               itemBuilder: (final BuildContext context, final int index) {
                 final String date = groupedHistory.keys.elementAt(index);
                 final List<HistoryData> dateItems = groupedHistory[date]!;
 
-                return ConstrainedItem(
-                  child: BoxedList(
-                    title: date,
-                    children: dateItems
-                        .map(
-                          (final HistoryData row) => HistoryItem(
-                            title: row.expression,
-                            subtitle: '= ${row.result}',
-                            // title: '${row['history']?['expression']}',
-                            // subtitle: '= ${row['history']?['result']}',
-                          ),
-                        )
-                        .toList(),
-                  ),
+                return IBoxedList(
+                  title: Text(date),
+                  children: dateItems
+                      .map(
+                        (final HistoryData row) => HistoryItem(
+                          title: row.expression,
+                          subtitle: '= ${row.result}',
+                          // title: '${row['history']?['expression']}',
+                          // subtitle: '= ${row['history']?['result']}',
+                        ),
+                      )
+                      .toList(),
                 );
               },
             );

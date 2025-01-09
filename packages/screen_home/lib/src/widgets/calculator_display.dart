@@ -1,7 +1,6 @@
-import 'package:app_constants/app_constants.dart';
 import 'package:app_providers/app_providers.dart';
-import 'package:app_widgets/app_widgets.dart';
 import 'package:flutter/widgets.dart';
+import 'package:infinity_widgets/infinity_widgets.dart';
 
 class CalculatorDisplay extends ConsumerWidget {
   const CalculatorDisplay({super.key});
@@ -16,11 +15,11 @@ class CalculatorDisplay extends ConsumerWidget {
         .replaceAll('/', '÷');
     final String tempResult = ref.watch(tempResultProvider);
     final String error = ref.watch(errorProvider);
-    return AppCard(
+    return ICard(
       padding: const EdgeInsets.only(
-        left: Dimens.largePadding,
-        top: Dimens.largePadding,
-        right: Dimens.largePadding,
+        left: InfinityDimens.largePadding,
+        top: InfinityDimens.largePadding,
+        right: InfinityDimens.largePadding,
       ),
       child: Column(
         mainAxisSize: MainAxisSize.min,
@@ -31,16 +30,16 @@ class CalculatorDisplay extends ConsumerWidget {
             text: oldExpression,
             reverse: false,
             textAlign: TextAlign.start,
-            style: AppTypography.display3.copyWith(
-              color: AppColors.getForegroundColor(context),
+            style: InfinityTypography.display3.copyWith(
+              color: InfinityColors.getForegroundColor(context),
             ),
           ),
           _TextItem(
             text: expression,
             reverse: true,
             textAlign: TextAlign.end,
-            style: AppTypography.display2.copyWith(
-              color: AppColors.getForegroundColor(context),
+            style: InfinityTypography.display2.copyWith(
+              color: InfinityColors.getForegroundColor(context),
             ),
           ),
           if (tempResult.trim().isNotEmpty)
@@ -48,8 +47,8 @@ class CalculatorDisplay extends ConsumerWidget {
               text: tempResult,
               reverse: false,
               textAlign: TextAlign.end,
-              style: AppTypography.display3.copyWith(
-                color: AppColors.getForegroundColor(context).dimmed(),
+              style: InfinityTypography.display3.copyWith(
+                color: InfinityColors.getForegroundColor(context).dimmed(),
               ),
             )
           else
@@ -57,8 +56,8 @@ class CalculatorDisplay extends ConsumerWidget {
               text: error,
               reverse: true,
               textAlign: TextAlign.end,
-              style: AppTypography.display3.copyWith(
-                color: AppColors.getStatusColor(context, StatusType.error),
+              style: InfinityTypography.display3.copyWith(
+                color: InfinityColors.getStatusColor(context, StatusType.error),
               ),
             ),
         ],
@@ -86,19 +85,19 @@ class _TextItem extends StatelessWidget {
       child: FittedBox(
         fit: BoxFit.scaleDown,
         child: Padding(
-          padding: const EdgeInsets.only(top: Dimens.largePadding),
+          padding: const EdgeInsets.only(top: InfinityDimens.largePadding),
           child: SingleChildScrollView(
             scrollDirection: Axis.horizontal,
             reverse: reverse,
             child: Row(
               children: <Widget>[
-                const SizedBox(width: Dimens.largePadding),
+                const SizedBox(width: InfinityDimens.largePadding),
                 Text(
                   text,
                   textAlign: textAlign,
                   style: style,
                 ),
-                const SizedBox(width: Dimens.largePadding),
+                const SizedBox(width: InfinityDimens.largePadding),
               ],
             ),
           ),

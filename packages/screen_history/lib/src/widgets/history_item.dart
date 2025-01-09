@@ -1,7 +1,7 @@
 import 'package:app_constants/app_constants.dart';
-import 'package:app_widgets/app_widgets.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:infinity_widgets/infinity_widgets.dart';
 
 class HistoryItem extends ConsumerWidget {
   const HistoryItem({
@@ -15,16 +15,16 @@ class HistoryItem extends ConsumerWidget {
 
   @override
   Widget build(final BuildContext context, final WidgetRef ref) {
-    return ListItem(
+    return IListItem(
       title: Text(
         title,
-        style: AppTypography.body.copyWith(
-          color: AppColors.getForegroundColor(context),
+        style: InfinityTypography.body.copyWith(
+          color: InfinityColors.getForegroundColor(context),
         ),
       ),
       subtitle: Text(
         subtitle,
-        style: AppTypography.title4.copyWith(
+        style: InfinityTypography.title3.copyWith(
           color: AppColors.primary,
         ),
       ),

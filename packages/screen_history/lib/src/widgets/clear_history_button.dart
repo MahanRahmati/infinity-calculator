@@ -1,8 +1,7 @@
-import 'package:app_constants/app_constants.dart';
 import 'package:app_localizations/app_localizations.dart';
 import 'package:app_providers/app_providers.dart';
-import 'package:app_widgets/app_widgets.dart';
 import 'package:flutter/widgets.dart';
+import 'package:infinity_widgets/infinity_widgets.dart';
 
 class ClearHistoryButton extends ConsumerWidget {
   const ClearHistoryButton({super.key});
@@ -12,8 +11,8 @@ class ClearHistoryButton extends ConsumerWidget {
     final TranslationsEn t = ref.watch(translationProvider);
     final AsyncValue<List<HistoryData>> history = ref.watch(historyProvider);
     return Padding(
-      padding: const EdgeInsetsDirectional.only(end: Dimens.padding),
-      child: IconButton(
+      padding: const EdgeInsetsDirectional.only(end: InfinityDimens.padding),
+      child: IButton.icon(
         onPressed: history.when(
           data: (final List<HistoryData> data) {
             if (data.isEmpty) {
@@ -25,23 +24,20 @@ class ClearHistoryButton extends ConsumerWidget {
                 pageListBuilder: (final BuildContext context) {
                   return <SliverWoltModalSheetPage>[
                     WoltModalSheetPage(
-                      navBarHeight: 1,
-                      backgroundColor: AppColors.getBackgroundColor(
-                        context,
-                        BackgroundType.card,
-                      ),
-                      surfaceTintColor: AppColors.transparent,
-                      child: MessageDialog(
+                      hasTopBarLayer: false,
+                      child: IMessageDialog(
                         title: t.clearHistory,
                         description: t.clearHistoryDescription,
-                        action: DialogButton(
-                          onPressed: () {
-                            ref.read(historyProvider.notifier).clearHistory();
-                            Navigator.pop(context);
-                          },
-                          statusType: StatusType.error,
-                          child: Text(t.clearHistory),
-                        ),
+                        actions: <Widget>[
+                          IButton.filled(
+                            onPressed: () {
+                              ref.read(historyProvider.notifier).clearHistory();
+                              Navigator.pop(context);
+                            },
+                            statusType: StatusType.error,
+                            child: Text(t.clearHistory),
+                          ),
+                        ],
                       ),
                     ),
                   ];

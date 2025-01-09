@@ -19,6 +19,7 @@ dependencies:
 
   wolt_modal_sheet: ^0.10.0
   url_launcher: ^6.3.1
+  infinity_widgets: ^1.0.1
 
 dev_dependencies:
   flutter_test:

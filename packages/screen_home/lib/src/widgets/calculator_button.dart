@@ -1,6 +1,6 @@
 import 'package:app_constants/app_constants.dart';
-import 'package:app_widgets/app_widgets.dart';
 import 'package:flutter/widgets.dart';
+import 'package:infinity_widgets/infinity_widgets.dart';
 
 class CalculatorButton extends StatelessWidget {
   const CalculatorButton({
@@ -25,27 +25,27 @@ class CalculatorButton extends StatelessWidget {
     final bool isEquals = text == '=';
 
     final Color? backgroundColor = isClear
-        ? AppColors.getStatusColor(context, StatusType.error)
+        ? InfinityColors.getStatusColor(context, StatusType.error)
             .withTransparency(0.15)
         : isEquals
             ? AppColors.primary
             : null;
 
     final Color foregroundColor = isClear
-        ? AppColors.getStatusColor(context, StatusType.error)
-        : AppColors.getForegroundColor(
+        ? InfinityColors.getStatusColor(context, StatusType.error)
+        : InfinityColors.getForegroundColor(
             context,
-            brightness:
-                isEquals ? AppColors.primary.estimateBrightness() : null,
+            color: isEquals ? AppColors.primary : null,
           );
 
-    return Button(
+    return IButton(
       backgroundColor: backgroundColor,
       elavation: _getElavation(),
       onPressed: onPressed,
+      padding: EdgeInsets.zero,
       child: Text(
         text,
-        style: AppTypography.title1.copyWith(
+        style: InfinityTypography.title1.copyWith(
           color: foregroundColor,
         ),
       ),

@@ -1,6 +1,6 @@
-import 'package:app_constants/app_constants.dart';
 import 'package:app_router/app_router.dart';
 import 'package:flutter/widgets.dart';
+import 'package:infinity_widgets/infinity_widgets.dart';
 import 'package:service_native_splash/service_native_splash.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -26,7 +26,7 @@ class _SplashScreenState extends State<SplashScreen> {
 
   @override
   Widget build(final BuildContext context) {
-    final Color backgroundColor = AppColors.getBackgroundColor(
+    final Color backgroundColor = InfinityColors.getBackgroundColor(
       context,
       BackgroundType.window,
     );

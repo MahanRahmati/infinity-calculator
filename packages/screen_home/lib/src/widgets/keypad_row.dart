@@ -1,5 +1,5 @@
-import 'package:app_constants/app_constants.dart';
 import 'package:flutter/widgets.dart';
+import 'package:infinity_widgets/infinity_widgets.dart';
 
 class KeypadRow extends StatelessWidget {
   const KeypadRow({
@@ -14,7 +14,7 @@ class KeypadRow extends StatelessWidget {
     return Expanded(
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        spacing: Dimens.largePadding,
+        spacing: InfinityDimens.largePadding,
         children: children,
       ),
     );
