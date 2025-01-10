@@ -43,6 +43,7 @@ class CalculatorButton extends StatelessWidget {
       elavation: _getElavation(),
       onPressed: onPressed,
       padding: EdgeInsets.zero,
+      borderRadius: InfinityDimens.borderRadius,
       child: Text(
         text,
         style: InfinityTypography.title1.copyWith(
