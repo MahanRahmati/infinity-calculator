@@ -12,11 +12,15 @@ class CalculatorButton extends StatelessWidget {
   final String text;
   final VoidCallback onPressed;
 
-  int _getElavation() {
+  bool _isOperation() {
     if (RegExp(r'[0-9.]').hasMatch(text)) {
-      return 2;
+      return false;
     }
-    return 1;
+    return true;
+  }
+
+  int? _getElavation() {
+    return _isOperation() ? 1 : 2;
   }
 
   @override
