@@ -430,10 +430,10 @@ packages:
     dependency: "direct main"
     description:
       name: infinity_widgets
-      sha256: "1c9d706c9a3f44f57c48025d97aad128330eaa3243c0ae3bc6dc719e8159a0d3"
+      sha256: "36506c57f0acd18315815f60017024831b68c0a7f3ef1a3a224fcebeaef1b2b8"
       url: "https://pub.dev"
     source: hosted
-    version: "1.0.3"
+    version: "1.0.4"
   intl:
     dependency: "direct main"
     description:

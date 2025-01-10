@@ -85,6 +85,7 @@ class MoreButton extends ConsumerWidget {
     return Padding(
       padding: const EdgeInsetsDirectional.only(end: InfinityDimens.padding),
       child: IButton.icon(
+        isTransparent: true,
         onPressed: () => _showMoreOptions(context, ref),
         icon: MingCuteIcons.mgc_more_1_line,
       ),

@@ -15,7 +15,7 @@ dependencies:
 
   flutter_riverpod: ^2.6.1
   riverpod_annotation: ^2.6.1
-  infinity_widgets: ^1.0.3
+  infinity_widgets: ^1.0.4
 
   app_constants: ^1.0.0
   app_localizations: ^1.0.0
