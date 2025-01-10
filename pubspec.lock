@@ -430,10 +430,10 @@ packages:
     dependency: "direct main"
     description:
       name: infinity_widgets
-      sha256: "331eae35f9fae3947f07917b4b5f194c55cf3e974c2f7f8df632752a725a50e3"
+      sha256: "1c9d706c9a3f44f57c48025d97aad128330eaa3243c0ae3bc6dc719e8159a0d3"
       url: "https://pub.dev"
     source: hosted
-    version: "1.0.1"
+    version: "1.0.3"
   intl:
     dependency: "direct main"
     description:
@@ -793,10 +793,10 @@ packages:
     dependency: transitive
     description:
       name: slang
-      sha256: "4cdc3d8f4b384dbc56d94c87a5371d4a584460d82a74e18247ec690a0e369ff2"
+      sha256: "2778b88f05ffc23fd0a37436f607bf2a541d0b6b922e69a8ea5bbd50c2427d18"
       url: "https://pub.dev"
     source: hosted
-    version: "4.4.0"
+    version: "4.4.1"
   slang_build_runner:
     dependency: transitive
     description:

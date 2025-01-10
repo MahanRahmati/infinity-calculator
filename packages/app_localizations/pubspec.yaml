@@ -13,7 +13,7 @@ dependencies:
   flutter:
     sdk: flutter
 
-  slang: ^4.4.0
+  slang: ^4.4.1
   slang_flutter: ^4.4.0
 
 dev_dependencies:

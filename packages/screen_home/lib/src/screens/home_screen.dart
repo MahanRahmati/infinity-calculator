@@ -18,6 +18,7 @@ class HomeScreen extends ConsumerWidget {
     ref.watch(historyProvider);
     return KeyboardHandler(
       child: IResponsiveScaffold(
+        useSafeArea: true,
         headerBarBuilder: (
           final BuildContext context,
           final ResponsiveStates state,
@@ -25,7 +26,9 @@ class HomeScreen extends ConsumerWidget {
           return IHeaderBar(
             middle: Text(t.appName),
             trailing: <Widget>[
-              MoreButton(fullExtended: state == ResponsiveStates.fullExtended),
+              MoreButton(
+                fullExtended: state == ResponsiveStates.fullExtended,
+              ),
             ],
           );
         },
@@ -42,21 +45,17 @@ class HomeScreen extends ConsumerWidget {
           final BuildContext context,
           final ResponsiveStates state,
         ) {
+          const Column child = Column(
+            children: <Widget>[
+              Expanded(flex: 35, child: CalculatorDisplay()),
+              Expanded(flex: 55, child: CalculatorKeypad()),
+            ],
+          );
           if (state == ResponsiveStates.fullExtended) {
-            return const Column(
-              children: <Widget>[
-                Expanded(flex: 35, child: CalculatorDisplay()),
-                Expanded(flex: 55, child: CalculatorKeypad()),
-              ],
-            );
+            return child;
           }
           return const IBoundedBox(
-            child: Column(
-              children: <Widget>[
-                Expanded(flex: 35, child: CalculatorDisplay()),
-                Expanded(flex: 55, child: CalculatorKeypad()),
-              ],
-            ),
+            child: child,
           );
         },
       ),
