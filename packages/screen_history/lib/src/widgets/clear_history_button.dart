@@ -13,6 +13,7 @@ class ClearHistoryButton extends ConsumerWidget {
     return Padding(
       padding: const EdgeInsetsDirectional.only(end: InfinityDimens.padding),
       child: IButton.icon(
+        isTransparent: true,
         onPressed: history.when(
           data: (final List<HistoryData> data) {
             if (data.isEmpty) {
