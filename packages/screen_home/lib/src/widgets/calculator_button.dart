@@ -19,8 +19,8 @@ class CalculatorButton extends StatelessWidget {
     return true;
   }
 
-  int? _getElavation() {
-    return _isOperation() ? 1 : 2;
+  int? _getElevation() {
+    return _isOperation() ? null : 3;
   }
 
   @override
@@ -44,7 +44,7 @@ class CalculatorButton extends StatelessWidget {
 
     return IButton(
       backgroundColor: backgroundColor,
-      elavation: _getElavation(),
+      elevation: _getElevation(),
       onPressed: onPressed,
       padding: EdgeInsets.zero,
       borderRadius: InfinityDimens.borderRadius,

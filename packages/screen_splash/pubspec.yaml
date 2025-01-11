@@ -13,7 +13,7 @@ dependencies:
   flutter:
     sdk: flutter
 
-  infinity_widgets: ^1.0.4
+  infinity_widgets: ^1.0.5
 
   app_constants: ^1.0.0
   app_router: ^1.0.0

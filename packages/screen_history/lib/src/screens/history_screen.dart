@@ -19,11 +19,11 @@ class HistoryScreen extends ConsumerWidget {
     final TranslationsEn t = ref.watch(translationProvider);
     return Scaffold(
       appBar: IHeaderBar(
-        leading: isInside ? null : const IBackButton(),
         middle: Text(t.history),
         trailing: const <Widget>[
           ClearHistoryButton(),
         ],
+        primary: !isInside,
       ),
       backgroundColor: isInside ? InfinityColors.transparent : null,
       body: const CalculatorHistory(),
