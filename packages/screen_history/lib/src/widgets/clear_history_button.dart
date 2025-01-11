@@ -1,5 +1,6 @@
 import 'package:app_localizations/app_localizations.dart';
 import 'package:app_providers/app_providers.dart';
+import 'package:app_utils/app_utils.dart';
 import 'package:flutter/widgets.dart';
 import 'package:infinity_widgets/infinity_widgets.dart';
 
@@ -24,7 +25,7 @@ class ClearHistoryButton extends ConsumerWidget {
                 context: context,
                 pageListBuilder: (final BuildContext context) {
                   return <SliverWoltModalSheetPage>[
-                    WoltModalSheetPage(
+                    IModalSheetPage(
                       hasTopBarLayer: false,
                       child: IMessageDialog(
                         title: t.clearHistory,
@@ -34,6 +35,8 @@ class ClearHistoryButton extends ConsumerWidget {
                             onPressed: () {
                               ref.read(historyProvider.notifier).clearHistory();
                               Navigator.pop(context);
+                              Navigator.maybePop(context);
+                              clearAll(ref);
                             },
                             statusType: StatusType.error,
                             child: Text(t.clearHistory),
