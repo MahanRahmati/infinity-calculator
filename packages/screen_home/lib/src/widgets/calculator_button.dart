@@ -20,7 +20,7 @@ class CalculatorButton extends StatelessWidget {
   }
 
   int? _getElevation() {
-    return _isOperation() ? null : 3;
+    return _isOperation() ? null : 2;
   }
 
   @override
