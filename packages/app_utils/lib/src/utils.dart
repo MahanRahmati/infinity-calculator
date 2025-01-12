@@ -11,6 +11,11 @@ void calculateResult(final WidgetRef ref) {
   final TranslationsEn t = ref.watch(translationProvider);
   String expression = ref.read(expressionProvider);
 
+  if (expression.isEmpty) {
+    ref.read(expressionProvider.notifier).add('0');
+    return;
+  }
+
   // If current expression is just a number (result from previous calculation)
   // and we have a previous expression stored, repeat the last operation
   if (!expression.contains(RegExp(r'[+\-*/()]')) &&
