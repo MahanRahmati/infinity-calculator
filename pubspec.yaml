@@ -1,5 +1,5 @@
 name: calculator
-description: 'A new Flutter project.'
+description: 'A clean and modern calculator with a beautiful interface.'
 publish_to: 'none'
 version: 1.0.0+1
 
@@ -48,6 +48,8 @@ flutter:
     - LICENSE
     - assets/images/
     - assets/fonts/
+    - assets/com.infinity.calculator.desktop
+    - assets/desktop_app_icon.png
 
   fonts:
     - family: Inter

@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Infinity Calculator
+Comment=A clean and modern calculator with a beautiful interface
+Type=Application
+Exec=infinity-calculator
+Icon=desktop_app_icon.png
+Terminal=false
+Categories=Utility;Calculator;
+Keywords=Calculator;Math;
