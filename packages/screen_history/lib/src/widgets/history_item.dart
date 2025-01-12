@@ -16,12 +16,7 @@ class HistoryItem extends ConsumerWidget {
   @override
   Widget build(final BuildContext context, final WidgetRef ref) {
     return IListItem(
-      title: Text(
-        title,
-        style: InfinityTypography.body.copyWith(
-          color: InfinityColors.getForegroundColor(context),
-        ),
-      ),
+      title: Text(title),
       subtitle: Text(
         subtitle,
         style: InfinityTypography.title3.copyWith(

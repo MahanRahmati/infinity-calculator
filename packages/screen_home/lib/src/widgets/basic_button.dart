@@ -20,9 +20,7 @@ class BasicButton extends ConsumerWidget {
       child: SizedBox.expand(
         child: CalculatorButton(
           text: text,
-          onPressed: () {
-            ref.read(expressionProvider.notifier).add(text);
-          },
+          onPressed: () => ref.read(expressionProvider.notifier).add(text),
         ),
       ),
     );

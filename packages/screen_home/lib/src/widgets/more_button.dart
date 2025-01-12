@@ -17,15 +17,8 @@ class MoreButton extends ConsumerWidget {
 
   void _showMoreOptions(final BuildContext context, final WidgetRef ref) {
     final TranslationsEn t = ref.watch(translationProvider);
-    final Color backgroundColor = InfinityColors.getBackgroundColor(
-      context,
-      BackgroundType.window,
-    );
-
     final WoltModalSheetPage pageContent = WoltModalSheetPage(
       hasTopBarLayer: false,
-      backgroundColor: backgroundColor,
-      surfaceTintColor: InfinityColors.transparent,
       child: SafeArea(
         top: false,
         child: Padding(

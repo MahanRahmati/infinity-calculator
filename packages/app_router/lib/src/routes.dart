@@ -45,17 +45,6 @@ class Routes {
     }
   }
 
-  static void navigateToHome(
-    final BuildContext context, {
-    final Object? arguments,
-  }) {
-    Navigator.pushNamed(
-      context,
-      RoutesName.home,
-      arguments: arguments,
-    );
-  }
-
   static void goToHome(
     final BuildContext context, {
     final Object? arguments,
@@ -72,17 +61,6 @@ class Routes {
     final Object? arguments,
   }) {
     Navigator.pushNamed(
-      context,
-      RoutesName.history,
-      arguments: arguments,
-    );
-  }
-
-  static void goToHistory(
-    final BuildContext context, {
-    final Object? arguments,
-  }) {
-    Navigator.pushReplacementNamed(
       context,
       RoutesName.history,
       arguments: arguments,

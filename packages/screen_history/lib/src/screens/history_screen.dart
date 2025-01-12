@@ -20,9 +20,7 @@ class HistoryScreen extends ConsumerWidget {
     return Scaffold(
       appBar: IHeaderBar(
         middle: Text(t.history),
-        trailing: const <Widget>[
-          ClearHistoryButton(),
-        ],
+        trailing: const <Widget>[ClearHistoryButton()],
         primary: !isInside,
       ),
       backgroundColor: isInside ? InfinityColors.transparent : null,

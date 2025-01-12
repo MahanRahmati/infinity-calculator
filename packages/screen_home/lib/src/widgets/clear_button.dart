@@ -21,9 +21,7 @@ class ClearButton extends ConsumerWidget {
               ref.read(expressionProvider.notifier).removeLast();
             }
           },
-          onLongPress: () {
-            clearAll(ref);
-          },
+          onLongPress: () => clearAll(ref),
         ),
       ),
     );

@@ -26,9 +26,7 @@ class HomeScreen extends ConsumerWidget {
           return IHeaderBar(
             middle: Text(t.appName),
             trailing: <Widget>[
-              MoreButton(
-                fullExtended: state == ResponsiveStates.fullExtended,
-              ),
+              MoreButton(fullExtended: state == ResponsiveStates.fullExtended),
             ],
           );
         },
@@ -36,10 +34,13 @@ class HomeScreen extends ConsumerWidget {
           final BuildContext context,
           final ResponsiveStates state,
         ) {
-          if (state == ResponsiveStates.fullExtended) {
-            return const HistoryScreen(isInside: true);
-          }
-          return null;
+          return switch (state) {
+            ResponsiveStates.collapsed => null,
+            ResponsiveStates.extended => null,
+            ResponsiveStates.fullExtended => const HistoryScreen(
+                isInside: true,
+              ),
+          };
         },
         childWidgetBuilder: (
           final BuildContext context,
@@ -51,12 +52,11 @@ class HomeScreen extends ConsumerWidget {
               Expanded(flex: 55, child: CalculatorKeypad()),
             ],
           );
-          if (state == ResponsiveStates.fullExtended) {
-            return child;
-          }
-          return const IBoundedBox(
-            child: child,
-          );
+          return switch (state) {
+            ResponsiveStates.collapsed => const IBoundedBox(child: child),
+            ResponsiveStates.extended => const IBoundedBox(child: child),
+            ResponsiveStates.fullExtended => child,
+          };
         },
       ),
     );

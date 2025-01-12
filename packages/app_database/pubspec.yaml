@@ -13,7 +13,7 @@ dependencies:
   flutter:
     sdk: flutter
 
-  sqlite3: ^2.5.0
+  sqlite3: ^2.6.0
   sqlite3_flutter_libs: ^0.5.28
   path: ^1.9.0
   path_provider: ^2.1.5

@@ -32,9 +32,7 @@ class _SplashScreenState extends State<SplashScreen> {
     );
     return ColoredBox(
       color: backgroundColor,
-      child: const Center(
-        child: SizedBox(),
-      ),
+      child: const Center(child: SizedBox()),
     );
   }
 }

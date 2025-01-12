@@ -1,6 +1,6 @@
 import 'package:app_localizations/app_localizations.dart';
 import 'package:app_providers/app_providers.dart';
-import 'package:flutter/material.dart' hide IconButton;
+import 'package:flutter/material.dart';
 import 'package:infinity_widgets/infinity_widgets.dart';
 
 import 'history_item.dart';
@@ -40,8 +40,6 @@ class CalculatorHistory extends ConsumerWidget {
                         (final HistoryData row) => HistoryItem(
                           title: row.expression,
                           subtitle: '= ${row.result}',
-                          // title: '${row['history']?['expression']}',
-                          // subtitle: '= ${row['history']?['result']}',
                         ),
                       )
                       .toList(),
@@ -82,29 +80,4 @@ class CalculatorHistory extends ConsumerWidget {
 
     return grouped;
   }
-
-  // Map<String, List<HistoryData>> groupHistoryByDate(
-  //   final List<HistoryData> history,
-  // ) {
-  //   final Map<String, List<HistoryData>> grouped =
-  //       <String, List<HistoryData>>{};
-
-  //   for (final HistoryData item in history) {
-  //     print('-------');
-  //     print(item);
-  //     print('-------');
-  //     final DateTime timestamp = DateTime.fromMillisecondsSinceEpoch(
-  //       item['history']?['timestamp'] as int,
-  //     );
-  //     final String date =
-  //         '${timestamp.day}/${timestamp.month}/${timestamp.year}';
-
-  //     if (!grouped.containsKey(date)) {
-  //       grouped[date] = <HistoryData>[];
-  //     }
-  //     grouped[date]!.add(item);
-  //   }
-
-  //   return grouped;
-  // }
 }

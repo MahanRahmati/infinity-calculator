@@ -30,17 +30,13 @@ class CalculatorDisplay extends ConsumerWidget {
             text: oldExpression,
             reverse: false,
             textAlign: TextAlign.start,
-            style: InfinityTypography.display3.copyWith(
-              color: InfinityColors.getForegroundColor(context),
-            ),
+            style: InfinityTypography.display3,
           ),
           _TextItem(
             text: expression,
             reverse: true,
             textAlign: TextAlign.end,
-            style: InfinityTypography.display2.copyWith(
-              color: InfinityColors.getForegroundColor(context),
-            ),
+            style: InfinityTypography.display2,
           ),
           if (tempResult.trim().isNotEmpty)
             _TextItem(
