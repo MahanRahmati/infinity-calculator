@@ -7,10 +7,12 @@ class CalculatorButton extends StatelessWidget {
     super.key,
     required this.text,
     required this.onPressed,
+    this.onLongPress,
   });
 
   final String text;
   final VoidCallback onPressed;
+  final VoidCallback? onLongPress;
 
   bool _isOperation() {
     if (RegExp(r'[0-9.]').hasMatch(text)) {
@@ -25,7 +27,7 @@ class CalculatorButton extends StatelessWidget {
 
   @override
   Widget build(final BuildContext context) {
-    final bool isClear = text == 'C';
+    final bool isClear = text == 'C' || text == '⌫';
     final bool isEquals = text == '=';
 
     final Color? backgroundColor = isClear
@@ -46,6 +48,7 @@ class CalculatorButton extends StatelessWidget {
       backgroundColor: backgroundColor,
       elevation: _getElevation(),
       onPressed: onPressed,
+      onLongPress: onLongPress,
       padding: EdgeInsets.zero,
       borderRadius: InfinityDimens.borderRadius,
       child: Text(

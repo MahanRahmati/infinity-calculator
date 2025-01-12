@@ -5,6 +5,7 @@ import 'package:infinity_widgets/infinity_widgets.dart';
 
 import 'basic_button.dart';
 import 'calculator_button.dart';
+import 'clear_button.dart';
 import 'keypad_row.dart';
 import 'operation_button.dart';
 
@@ -19,19 +20,12 @@ class CalculatorKeypad extends ConsumerWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         spacing: InfinityDimens.largePadding,
         children: <Widget>[
-          KeypadRow(
+          const KeypadRow(
             children: <Widget>[
-              Expanded(
-                child: SizedBox.expand(
-                  child: CalculatorButton(
-                    text: 'C',
-                    onPressed: () => clearAll(ref),
-                  ),
-                ),
-              ),
-              const BasicButton(text: '('),
-              const BasicButton(text: ')'),
-              const OperationButton(symbol: '÷', operation: '/'),
+              ClearButton(),
+              BasicButton(text: '('),
+              BasicButton(text: ')'),
+              OperationButton(symbol: '÷', operation: '/'),
             ],
           ),
           const KeypadRow(
@@ -58,38 +52,45 @@ class CalculatorKeypad extends ConsumerWidget {
               OperationButton(symbol: '+', operation: '+'),
             ],
           ),
-          KeypadRow(
-            children: <Widget>[
-              Expanded(
-                child: SizedBox.expand(
-                  child: CalculatorButton(
-                    text: '.',
-                    onPressed: () {
-                      ref.read(expressionProvider.notifier).addDecimal();
-                    },
+          Expanded(
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: <Widget>[
+                const BasicButton(
+                  text: '0',
+                  flex: 2,
+                ),
+                const SizedBox(width: InfinityDimens.largePadding),
+                Expanded(
+                  child: Padding(
+                    padding: const EdgeInsetsDirectional.only(
+                      end: InfinityDimens.padding,
+                    ),
+                    child: SizedBox.expand(
+                      child: CalculatorButton(
+                        text: '.',
+                        onPressed: () {
+                          ref.read(expressionProvider.notifier).addDecimal();
+                        },
+                      ),
+                    ),
                   ),
                 ),
-              ),
-              const BasicButton(text: '0'),
-              Expanded(
-                child: SizedBox.expand(
-                  child: CalculatorButton(
-                    text: '⌫',
-                    onPressed: () {
-                      ref.read(expressionProvider.notifier).removeLast();
-                    },
+                Expanded(
+                  child: Padding(
+                    padding: const EdgeInsetsDirectional.only(
+                      start: InfinityDimens.padding,
+                    ),
+                    child: SizedBox.expand(
+                      child: CalculatorButton(
+                        text: '=',
+                        onPressed: () => calculateResult(ref),
+                      ),
+                    ),
                   ),
                 ),
-              ),
-              Expanded(
-                child: SizedBox.expand(
-                  child: CalculatorButton(
-                    text: '=',
-                    onPressed: () => calculateResult(ref),
-                  ),
-                ),
-              ),
-            ],
+              ],
+            ),
           ),
         ],
       ),
