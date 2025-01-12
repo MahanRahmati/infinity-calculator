@@ -9,7 +9,22 @@ String calculateExpression(final String expression) {
 
 void calculateResult(final WidgetRef ref) {
   final TranslationsEn t = ref.watch(translationProvider);
-  final String expression = ref.read(expressionProvider);
+  String expression = ref.read(expressionProvider);
+
+  // If current expression is just a number (result from previous calculation)
+  // and we have a previous expression stored, repeat the last operation
+  if (!expression.contains(RegExp(r'[+\-*/()]')) &&
+      ref.read(oldExpressionProvider).isNotEmpty) {
+    final String lastExpression = ref.read(oldExpressionProvider);
+
+    // Extract the last operation and operand
+    final RegExp operationPattern = RegExp(r'[+\-*/].*$');
+    final Match? match = operationPattern.firstMatch(lastExpression);
+    if (match != null) {
+      expression = expression + match.group(0)!;
+    }
+  }
+
   try {
     // Add validation for empty expression
     if (expression.isEmpty || expression == '0' || expression == '-') {
