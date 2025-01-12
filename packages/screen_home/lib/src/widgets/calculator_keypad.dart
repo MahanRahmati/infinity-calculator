@@ -56,10 +56,7 @@ class CalculatorKeypad extends ConsumerWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: <Widget>[
-                const BasicButton(
-                  text: '0',
-                  flex: 2,
-                ),
+                const BasicButton(text: '0', flex: 2),
                 const SizedBox(width: InfinityDimens.largePadding),
                 Expanded(
                   child: Padding(
