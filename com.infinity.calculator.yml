@@ -13,17 +13,19 @@ modules:
     buildsystem: simple
     build-commands:
       - mkdir -p /app/bin
-      - mkdir -p /app/lib
-      - cp Calculator /app/bin/infinity-calculator
-      - cp -r lib/* /app/lib/
-      - cp -r data /app/
-      - install -Dm644 data/flutter_assets/assets/com.infinity.calculator.desktop /app/share/applications/com.infinity.calculator.desktop
-      - install -Dm644 data/flutter_assets/assets/desktop_app_icon.png /app/share/icons/hicolor/scalable/apps/com.infinity.calculator.png
+      - mv Calculator /app/bin/infinity-calculator
       - chmod +x /app/bin/infinity-calculator
+      - mkdir -p /app/bin/data
+      - mv flutter_assets /app/bin/data/
+      - mv icudtl.dat /app/bin/data/
+      - mkdir -p /app/bin/lib
+      - mv lib* /app/bin/lib/
+      - install -Dm644 /app/bin/data/flutter_assets/assets/com.infinity.calculator.desktop /app/share/applications/com.infinity.calculator.desktop
+      - install -Dm644 /app/bin/data/flutter_assets/assets/desktop_app_icon.png /app/share/applications/desktop_app_icon.png
     sources:
-      - type: file
+      - type: archive
         url: https://github.com/MahanRahmati/infinity-calculator/releases/latest/download/calculator-linux-x64.zip
-        sha256-url: https://github.com/MahanRahmati/infinity-calculator/releases/latest/download/calculator-linux-x64.zip.sha256
+        sha256: TODO
         x-checker-data:
           type: json
           url: https://api.github.com/repos/MahanRahmati/infinity-calculator/releases/latest
