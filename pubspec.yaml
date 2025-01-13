@@ -48,8 +48,6 @@ flutter:
     - LICENSE
     - assets/images/
     - assets/fonts/
-    - assets/com.infinity.calculator.desktop
-    - assets/desktop_app_icon.png
 
   fonts:
     - family: Inter

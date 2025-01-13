@@ -20,8 +20,8 @@ modules:
       - mv icudtl.dat /app/bin/data/
       - mkdir -p /app/bin/lib
       - mv lib* /app/bin/lib/
-      - install -Dm644 /app/bin/data/flutter_assets/assets/com.infinity.calculator.desktop /app/share/applications/com.infinity.calculator.desktop
-      - install -Dm644 /app/bin/data/flutter_assets/assets/desktop_app_icon.png /app/share/applications/desktop_app_icon.png
+      - install -Dm644 com.infinity.calculator.desktop /app/share/applications/com.infinity.calculator.desktop
+      - install -Dm644 com.infinity.calculator.png /app/share/icons/hicolor/scalable/apps/com.infinity.calculator.png
     sources:
       - type: archive
         url: https://github.com/MahanRahmati/infinity-calculator/releases/latest/download/calculator-linux-x64.zip
@@ -31,3 +31,10 @@ modules:
           url: https://api.github.com/repos/MahanRahmati/infinity-calculator/releases/latest
           version-query: .tag_name
           url-query: '.assets[] | select(.name=="calculator-linux-x64.zip") | .browser_download_url'
+      - type: file
+        url: https://raw.githubusercontent.com/MahanRahmati/infinity-calculator/main/flatpak/com.infinity.calculator.desktop
+        sha256: TODO
+      - type: file
+        url: https://raw.githubusercontent.com/MahanRahmati/infinity-calculator/main/flatpak/com.infinity.calculator.png
+        sha256: TODO
+
