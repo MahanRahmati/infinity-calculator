@@ -64,8 +64,6 @@ jobs:
         run: |
           cd build/linux/x64/release/bundle
           zip -r ../../../../../calculator-linux-x64.zip .
-          cd ../../../../../
-          sha256sum calculator-linux-x64.zip > calculator-linux-x64.zip.sha256
 
       - name: Archive Android Build
         if: matrix.os == 'ubuntu-latest'
@@ -87,7 +85,6 @@ jobs:
           name: linux-artifacts
           path: |
             calculator-linux-x64.zip
-            calculator-linux-x64.zip.sha256
             calculator-android-*.apk
 
       - name: Upload macOS Artifacts
@@ -97,8 +94,37 @@ jobs:
           name: macos-artifacts
           path: calculator-macos.zip
 
-  create-release:
+  generate-flatpak-manifest:
     needs: build-and-release
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Download Artifacts
+        uses: actions/download-artifact@v4
+        with:
+          path: artifacts
+          
+      - name: Calculate SHA256
+        run: |
+          echo "LINUX_SHA256=$(sha256sum artifacts/linux-artifacts/calculator-linux-x64.zip | awk '{print $1}')" >> $GITHUB_ENV
+          echo "DESKTOP_SHA256=$(sha256sum flatpak/com.infinity.calculator.desktop | awk '{print $1}')" >> $GITHUB_ENV
+          echo "ICON_SHA256=$(sha256sum flatpak/com.infinity.calculator.png | awk '{print $1}')" >> $GITHUB_ENV
+          
+      - name: Generate Flatpak Manifest
+        run: |
+          sed "s/sha256: TODO.*# linux-x64/sha256: ${{ env.LINUX_SHA256 }} # linux-x64/" com.infinity.calculator.yml > calculator-flatpak.yml
+          sed -i "s/sha256: TODO.*# desktop/sha256: ${{ env.DESKTOP_SHA256 }} # desktop/" calculator-flatpak.yml
+          sed -i "s/sha256: TODO.*# icon/sha256: ${{ env.ICON_SHA256 }} # icon/" calculator-flatpak.yml
+          
+      - name: Upload Manifest
+        uses: actions/upload-artifact@v4
+        with:
+          name: flatpak-manifest
+          path: calculator-flatpak.yml
+
+  create-release:
+    needs: generate-flatpak-manifest
     runs-on: ubuntu-latest
     steps:
       - name: Download Artifacts
@@ -115,8 +141,8 @@ jobs:
           tag_name: ${{ github.event.inputs.version }}
           files: |
             artifacts/**/*.zip
-            artifacts/**/*.zip.sha256
             artifacts/**/*.apk
+            artifacts/**/calculator-flatpak.yml
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
