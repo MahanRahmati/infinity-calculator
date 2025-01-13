@@ -23,6 +23,7 @@ modules:
     sources:
       - type: file
         url: https://github.com/MahanRahmati/infinity-calculator/releases/latest/download/calculator-linux-x64.zip
+        sha256-url: https://github.com/MahanRahmati/infinity-calculator/releases/latest/download/calculator-linux-x64.zip.sha256
         x-checker-data:
           type: json
           url: https://api.github.com/repos/MahanRahmati/infinity-calculator/releases/latest

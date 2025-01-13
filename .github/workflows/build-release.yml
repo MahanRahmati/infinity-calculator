@@ -64,6 +64,8 @@ jobs:
         run: |
           cd build/linux/x64/release/bundle
           zip -r ../../../../../calculator-linux-x64.zip .
+          cd ../../../../../
+          sha256sum calculator-linux-x64.zip > calculator-linux-x64.zip.sha256
 
       - name: Archive Android Build
         if: matrix.os == 'ubuntu-latest'
@@ -85,6 +87,7 @@ jobs:
           name: linux-artifacts
           path: |
             calculator-linux-x64.zip
+            calculator-linux-x64.zip.sha256
             calculator-android-*.apk
 
       - name: Upload macOS Artifacts
@@ -112,6 +115,7 @@ jobs:
           tag_name: ${{ github.event.inputs.version }}
           files: |
             artifacts/**/*.zip
+            artifacts/**/*.zip.sha256
             artifacts/**/*.apk
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
